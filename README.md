@@ -1,19 +1,36 @@
-# Calculator_Program
-This is a simple calculator built in Python. It allows users to perform four basic arithmetic operations:
+# Tkinter Calculator Application
 
-- Addition
-- Subtraction
-- Multiplication
-- Division (with error handling for division by zero)
+A Python desktop calculator application built with Tkinter. Features a 
+fully event-driven button grid, a sanitized expression evaluation pipeline, 
+and a structured component architecture separating input, logic, and rendering.
+
+## Features
+
+- Full arithmetic support including addition, subtraction, multiplication, and division
+- Expression sanitized through a regex pipeline before evaluation
+- Validates balanced expressions and catches division by zero before processing
+- Token-based button classification drives color coding and routing automatically
+- Reset button clears both the display and internal expression buffer
+- Input validation rejects malformed expressions with a clean error state
 
 ## How to Run
 
-1. Make sure you have Python installed.
-2. Open a terminal or command prompt.
-3. Navigate to the folder with the `calculator_program.py` file.
+```bash
+python Calculator_Program.py
+```
 
-## What I Learned
+No external dependencies. Requires Python 3 with Tkinter, which is 
+included in all standard Python installations.
 
-- Writing functions in Python
-- Using if-else conditionals
-- Getting user input and handling errors
+## Technical Highlights
+
+- `TokenType` enum classifies every button and drives the dispatch table
+- `ButtonFactory` builds all widgets from a centralized schema
+- `ExpressionEngine` manages the input buffer, evaluation, and session history
+- Regex sanitization pipeline strips unsafe characters before `eval` is called
+- `_resolve_command` dispatch table routes all button presses by token type
+- Rendering and logic fully separated for clean, independently testable architecture
+
+## Tech Stack
+
+Python 3 | Tkinter | dataclasses | enums | functools | re
